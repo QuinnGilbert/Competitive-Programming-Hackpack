@@ -1,4 +1,4 @@
-//O(sqrt(n)
+//O(sqrt(n))
 //returns list of primes of n with duplicates showing up multiple times
 static ArrayList<Integer> factor(int n){
 	ArrayList<Integer> result = new ArrayList<Integer>();
