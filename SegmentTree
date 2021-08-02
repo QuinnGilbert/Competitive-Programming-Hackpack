@@ -1,0 +1,39 @@
+  static class SegmentTree {
+		long[] tree;
+		int length;
+		//create with length, rounds up to nearest power of 2 (can be better)
+		SegmentTree(int n) {
+			length = 1;
+			while(length<n) {
+				length*=2;
+			}
+			tree = new long[length*2];
+		}
+		void add(int i, long v) {
+			int index = i+length;
+			tree[index] += v;
+			while(index!=0) {
+				index/=2;
+				tree[index] = gcd(tree[index*2],tree[index*2+1]);
+			}
+		}
+		long query(int l, int r) {
+			l+=length;
+			r +=length;
+			long result = -1;
+			while(l<=r) {
+				if(l%2==1) {
+          //put function here
+					result = gcd(result,tree[l]);
+					l++;
+				}
+				if(r%2==0) {
+					result = gcd(result,tree[r]);
+					r--;
+				}
+				l/=2;
+				r/=2;
+			}
+			return result;
+		}
+	}
