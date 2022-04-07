@@ -9,7 +9,7 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-void modify(int p, int value, vector<int> &t) {  // set value at position p
+void update(int p, int value, vector<int> &t) {  // set value at position p
     for(t[p+=t.size()/2]=value;p>1;p>>= 1) t[p>>1]=t[p]+t[p^1];
 }
 
